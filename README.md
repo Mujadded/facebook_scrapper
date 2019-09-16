@@ -13,7 +13,13 @@ gem install facebook_scrapper
 ## Usage
 
 ```sh
-FacebookScrapper::Scrapper.new
+facebook = FacebookScrapper::Scrapper.new
+
+facebook.login('email', 'password')
+
+facebook.get_posts_from_home
+
+facebook.get_posts_from_group_url
 ```
 
 ## Author
