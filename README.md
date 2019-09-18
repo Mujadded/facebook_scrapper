@@ -21,6 +21,7 @@ gem install selenium-webdriver
 ### Chrome driver
 
 To install the chrome driver, please follow:
+
 For Ubuntu:
 [Ubutu install](https://tecadmin.net/setup-selenium-chromedriver-on-ubuntu/)
 
