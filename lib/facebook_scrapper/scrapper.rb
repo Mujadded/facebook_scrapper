@@ -4,6 +4,11 @@ module FacebookScrapper
   class Scrapper
     def initialize
       @driver = Selenium::WebDriver.for :chrome
+      @logged_in = false
+    end
+
+    def is_logged_in?
+      @logged_in
     end
 
     def login(email, password)
@@ -21,6 +26,7 @@ module FacebookScrapper
       begin
         @driver.find_element(name: "xc_message")
         puts "Logged in"
+        @logged_in = true
         return true
       rescue Selenium::WebDriver::Error::NoSuchElementError => e
         body = @driver.find_element(tag_name: "body").text
