@@ -1,5 +1,5 @@
 # Welcome to FacebookScrapper Gem 👋
-![Version](https://img.shields.io/badge/version-0.3.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.3.1-blue.svg?cacheSeconds=2592000)
 [![Twitter: mujadded](https://img.shields.io/twitter/follow/mujadded.svg?style=social)](https://twitter.com/mujadded)
 
 > This is gem that gives you a way to gather data from facebook without using the api. For example for a bot or maybe for pet project. Using this gem we can scrap data from home or from a group. We can also post in group and also post status. It totally up to you how you want to proceed
