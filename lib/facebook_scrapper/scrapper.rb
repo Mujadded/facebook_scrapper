@@ -106,6 +106,10 @@ module FacebookScrapper
       end
     end
 
+    def get(url)
+      @driver.get(toBasicUrl(url))
+    end
+
     def get_post_object(raw_post, keywords = [])
       begin
         new_post = raw_post.find_element(css: "div[role='article']")
