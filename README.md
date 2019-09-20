@@ -57,7 +57,7 @@ If you have 2 step authenticate maybe authenticate the device then try again.
 
 To check if log in was successfull
 ```
-  facebook.logged_in?
+  facebook.is_logged_in?
 
 ```
 Then to get posts
