@@ -6,20 +6,6 @@ module FacebookScrapper
       @driver = Selenium::WebDriver.for :chrome
     end
 
-    def toBasicUrl(url)
-      if url.include? "m.facebook.com"
-        return url.gsub!("m.facebook.com", "mbasic.facebook.com")
-      elsif url.include? "www.facebook.com"
-        return url.gsub!("www.facebook.com", "mbasic.facebook.com")
-      else
-        return url
-      end
-    end
-
-    def get(url)
-      @driver.get(toBasicUrl(url))
-    end
-
     def login(email, password)
       url = "https://mbasic.facebook.com"
       get(url)
@@ -68,11 +54,11 @@ module FacebookScrapper
       get(url)
       posts = []
       all_posts = @driver.find_element(id: "m_group_stories_container").find_elements(css: "div[role='article']")
-      puts "Found #{all_posts.length} posts"
       all_posts.each do |raw_post|
         new_post = get_post_object(raw_post, keywords)
         posts.push(new_post) if new_post
       end
+      puts "Found #{posts.length} posts"
       return posts
     end
 
@@ -80,11 +66,11 @@ module FacebookScrapper
       get("https://mbasic.facebook.com")
       posts = []
       all_posts = @driver.find_elements(css: "div[role='article']")
-      puts "Found #{all_posts.length} posts"
       all_posts.each do |raw_post|
         new_post = get_post_object(raw_post, keywords)
         posts.push(new_post) if new_post
       end
+      puts "Found #{posts.length} posts"
       return posts
     end
 
@@ -103,6 +89,16 @@ module FacebookScrapper
     end
 
     private
+
+    def toBasicUrl(url)
+      if url.include? "m.facebook.com"
+        return url.gsub!("m.facebook.com", "mbasic.facebook.com")
+      elsif url.include? "www.facebook.com"
+        return url.gsub!("www.facebook.com", "mbasic.facebook.com")
+      else
+        return url
+      end
+    end
 
     def get_post_object(raw_post, keywords = [])
       begin

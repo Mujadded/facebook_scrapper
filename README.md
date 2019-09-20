@@ -1,5 +1,5 @@
 # Welcome to FacebookScrapper Gem 👋
-![Version](https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.2.5-blue.svg?cacheSeconds=2592000)
 [![Twitter: mujadded](https://img.shields.io/twitter/follow/mujadded.svg?style=social)](https://twitter.com/mujadded)
 
 > This is gem that gives you a way to gather data from facebook without using the api
