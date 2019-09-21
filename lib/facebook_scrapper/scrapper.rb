@@ -106,6 +106,16 @@ module FacebookScrapper
       end
     end
 
+    def toWebUrl(url)
+      if url.include? "m.facebook.com"
+        return url.gsub!("m.facebook.com", "www.facebook.com")
+      elsif url.include? "mbasic.facebook.com"
+        return url.gsub!("mbasic.facebook.com", "www.facebook.com")
+      else
+        return url
+      end
+    end
+
     def get(url)
       @driver.get(toBasicUrl(url))
     end
@@ -131,9 +141,9 @@ module FacebookScrapper
       post.like_count = all_links[-7 - with_share].text.to_i
       post.comment_count = all_links[-4 - with_share].text.to_i
       post.time = new_post.find_element(tag_name: "abbr").text
-      post.post_owner_link = all_links[0].attribute("href")
-      post.comment_link = all_links[-4 - with_share].attribute("href")
-      post.like_link = like_data.find_element(link_text: "Like").attribute("href")
+      post.post_owner_link = toWebUrl(all_links[0].attribute("href"))
+      post.comment_link = toWebUrl(all_links[-4 - with_share].attribute("href"))
+      post.like_link = toWebUrl(like_data.find_element(link_text: "Like").attribute("href"))
       post.more_link = all_links[-1].attribute("href")
 
       keyword_included = keywords.any? { |keyword| post.text.include?(keyword) }
