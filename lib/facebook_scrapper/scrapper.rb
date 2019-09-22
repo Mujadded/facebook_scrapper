@@ -131,10 +131,8 @@ module FacebookScrapper
       post = Post.new
       all_links = like_data.find_elements(tag_name: "a")
 
-      # dont track not post things
-      return nil unless all_links[-7].text.include?("Like")
-
-      with_share = like_data.find_elements(link_text: "Share").empty? ? 1 : 0
+      with_share = like_data.find_elements(link_text: "Share").empty? ? 0 : 1
+      return nil if new_post.find_element(tag_name: "h3").text.include?("Suggested Groups")
 
       post.owner = new_post.find_elements(tag_name: "a")[0].text
       post.text = new_post.find_element(tag_name: "p").text
