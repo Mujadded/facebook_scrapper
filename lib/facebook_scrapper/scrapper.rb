@@ -143,7 +143,8 @@ module FacebookScrapper
       post.time = new_post.find_element(tag_name: "abbr").text
       post.post_owner_link = toWebUrl(all_links[0].attribute("href"))
       post.comment_link = toWebUrl(all_links[-4 - with_share].attribute("href"))
-      post.like_link = toWebUrl(like_data.find_element(link_text: "Like").attribute("href"))
+      post.like_link = like_data.find_element(link_text: "Like").attribute("href")
+      post.post_link = toWebUrl(like_data.find_element(link_text: "Full Story").attribute("href"))
       post.more_link = all_links[-1].attribute("href")
 
       keyword_included = keywords.any? { |keyword| post.text.include?(keyword) }

@@ -1,6 +1,6 @@
 module FacebookScrapper
   class Post
-    attr_accessor :owner, :text, :like_count, :comment_count, :like_link, :time, :post_owner_link, :comment_link, :more_link
+    attr_accessor :owner, :text, :like_count, :comment_count, :like_link, :time, :post_owner_link, :comment_link, :more_link, :post_link
 
     def initialize
       self.owner = ""
@@ -12,6 +12,7 @@ module FacebookScrapper
       self.comment_link = ""
       self.like_link = ""
       self.more_link = ""
+      self.post_link = ""
     end
 
     def to_h
